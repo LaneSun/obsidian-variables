@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-variables",
 	"name": "Variables",
-	"version": "1.0.0",
+	"version": "1.0.4",
 	"minAppVersion": "0.15.0",
 	"description": "Replace {var_name} placeholders with values from note properties in Live Preview mode.",
 	"author": "Lane Sun",
