@@ -1,8 +1,46 @@
-/*
+/* Variables Plugin Styles */
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+/* Styles for Live Preview mode */
+.cm-variable-replacement {
+	text-decoration: underline;
+	cursor: help;
+}
 
-If your plugin does not need CSS, delete this file.
+.cm-variable-missing {
+	text-decoration: underline;
+	opacity: 0.6;
+	cursor: help;
+}
 
-*/
+.cm-variable-editing {
+	text-decoration: underline;
+	cursor: text;
+}
+
+/* Ensure proper spacing in editor */
+.cm-editor .cm-variable-replacement {
+	display: inline;
+	vertical-align: baseline;
+}
+
+.cm-editor .cm-variable-missing {
+	display: inline;
+	vertical-align: baseline;
+}
+
+/* Styles for Reading mode */
+.markdown-preview-view .cm-variable-replacement {
+	cursor: help;
+}
+
+.markdown-preview-view .cm-variable-missing {
+	opacity: 0.6;
+	cursor: help;
+}
+
+/* Ensure proper spacing in reading mode */
+.markdown-preview-view .cm-variable-replacement,
+.markdown-preview-view .cm-variable-missing {
+	display: inline;
+	vertical-align: baseline;
+}

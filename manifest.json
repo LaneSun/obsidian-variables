@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-variables",
+	"name": "Variables",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Replace {var_name} placeholders with values from note properties in Live Preview mode.",
+	"author": "Lane Sun",
+	"authorUrl": "",
+	"fundingUrl": "",
 	"isDesktopOnly": false
 }
