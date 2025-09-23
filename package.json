@@ -1,6 +1,6 @@
 {
 	"name": "variables",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Replace {var_name} placeholders with values from note properties in Live Preview mode.",
 	"main": "main.js",
 	"scripts": {

@@ -1,5 +1,5 @@
 import { Plugin, MarkdownView, PluginSettingTab, Setting, App } from "obsidian";
-import { Extension, StateField, StateEffect } from "@codemirror/state";
+import { Extension, StateField } from "@codemirror/state";
 import {
 	Decoration,
 	DecorationSet,
@@ -96,15 +96,6 @@ export default class VariablesPlugin extends Plugin {
 
 		// Add CSS styles
 		this.addStyle();
-
-		// Add command to refresh variables
-		this.addCommand({
-			id: "refresh-variables",
-			name: "Refresh Variables",
-			callback: () => {
-				this.refreshVariables();
-			},
-		});
 	}
 
 	onunload() {
@@ -190,9 +181,10 @@ export default class VariablesPlugin extends Plugin {
 
 					constructor(view: CMEditorView) {
 						// Get plugin instance from global app
-						this.plugin = (window as any).app?.plugins?.plugins?.[
-							"obsidian-variables"
-						];
+						this.plugin =
+							window.app?.plugins?.plugins?.[
+								"obsidian-variables"
+							];
 						this.decorations = this.buildDecorations(view);
 					}
 
@@ -321,7 +313,7 @@ export default class VariablesPlugin extends Plugin {
 
 					getVariablesFromCurrentNote(): Record<string, any> | null {
 						try {
-							const app = (window as any).app;
+							const app = window.app;
 							if (!app) return null;
 
 							const activeView =
@@ -375,7 +367,7 @@ export default class VariablesPlugin extends Plugin {
 		const file = this.app.vault.getAbstractFileByPath(sourcePath);
 		if (!file) return;
 
-		const cache = this.app.metadataCache.getFileCache(file as any);
+		const cache = this.app.metadataCache.getFileCache(file);
 		if (!cache?.frontmatter) return;
 
 		// Check if use-var is enabled for this note
@@ -604,33 +596,5 @@ class VariablesSettingTab extends PluginSettingTab {
 						await this.plugin.saveSettings();
 					}),
 			);
-
-		containerEl.createEl("h3", {
-			text: "Usage Instructions",
-		});
-
-		const instructions = containerEl.createEl("div");
-		instructions.innerHTML = `
-			<p><strong>How to use:</strong></p>
-			<ol>
-				<li>Add properties to your note's frontmatter (must include use-var: true):
-					<pre>---
-use-var: true
-protagonist: "Alice"
-location: "Wonderland"
-age: 7
----</pre>
-				</li>
-				<li>Use variables in your content: <code>{protagonist} lives in {location}</code></li>
-				<li>Switch to Live Preview mode to see the replacements</li>
-			</ol>
-			<p><strong>Tips:</strong></p>
-			<ul>
-				<li>Variable names are case-sensitive</li>
-				<li>Add <code>use-var: true</code> to enable variables for each note</li>
-				<li>Use descriptive variable names for better organization</li>
-				<li>Variables work with strings, numbers, and booleans</li>
-			</ul>
-		`;
 	}
 }
