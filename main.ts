@@ -181,10 +181,9 @@ export default class VariablesPlugin extends Plugin {
 
 					constructor(view: CMEditorView) {
 						// Get plugin instance from global app
-						this.plugin =
-							window.app?.plugins?.plugins?.[
-								"obsidian-variables"
-							];
+						this.plugin = (window as any).app?.plugins?.plugins?.[
+							"obsidian-variables"
+						];
 						this.decorations = this.buildDecorations(view);
 					}
 
@@ -313,7 +312,7 @@ export default class VariablesPlugin extends Plugin {
 
 					getVariablesFromCurrentNote(): Record<string, any> | null {
 						try {
-							const app = window.app;
+							const app = (window as any).app;
 							if (!app) return null;
 
 							const activeView =
@@ -367,7 +366,7 @@ export default class VariablesPlugin extends Plugin {
 		const file = this.app.vault.getAbstractFileByPath(sourcePath);
 		if (!file) return;
 
-		const cache = this.app.metadataCache.getFileCache(file);
+		const cache = this.app.metadataCache.getFileCache(file as any);
 		if (!cache?.frontmatter) return;
 
 		// Check if use-var is enabled for this note
