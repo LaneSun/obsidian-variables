@@ -182,7 +182,7 @@ export default class VariablesPlugin extends Plugin {
 					constructor(view: CMEditorView) {
 						// Get plugin instance from global app
 						this.plugin = (window as any).app?.plugins?.plugins?.[
-							"obsidian-variables"
+							"variables"
 						];
 						this.decorations = this.buildDecorations(view);
 					}
